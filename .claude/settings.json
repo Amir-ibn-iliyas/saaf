@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(npx expo *)",
+      "Bash(npx tsc *)",
+      "Bash(node *)",
+      "Bash(python *)",
+      "Bash(python3 *)",
+      "Bash(py *)",
+      "Bash(.venv/bin/python *)",
+      "Bash(.venv/Scripts/python *)",
+      "Bash(pip install *)",
+      "Bash(pytest *)",
+      "Bash(git --version)",
+      "Bash(node -v)",
+      "Bash(npm -v)",
+      "Bash(uvicorn *)",
+      "Bash(ffmpeg *)",
+      "Bash(ffprobe *)",
+      "Bash(git status)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./server/.env)",
+      "Bash(git push *)",
+      "Bash(rm -rf *)"
+    ]
+  }
+}

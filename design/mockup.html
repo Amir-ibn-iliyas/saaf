@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saaf — screen mockups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#15241B; --muted:#56665C; --paper:#F1F6F2; --surface:#FFFFFF; --wash:#DCEBE1; --line:#CFDDD3;
+    --neem:#0F7A55; --on-neem:#FFFFFF; --ok-bg:#DDF0E5; --ok-ink:#0B5A3E;
+    --amber:#E8A317; --page:#E4EEE7; --frame:#15241B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --ink:#E6F0EA; --muted:#93A79B; --paper:#0F1713; --surface:#17221C; --wash:#1F2E26; --line:#2A3A31;
+      --neem:#4CC38A; --on-neem:#062A1B; --ok-bg:#173A29; --ok-ink:#8FE3B8; --amber:#F0B84A; --page:#0A100D; --frame:#2A3A31; }
+  }
+  :root[data-theme="dark"] { --ink:#E6F0EA; --muted:#93A79B; --paper:#0F1713; --surface:#17221C; --wash:#1F2E26; --line:#2A3A31;
+    --neem:#4CC38A; --on-neem:#062A1B; --ok-bg:#173A29; --ok-ink:#8FE3B8; --amber:#F0B84A; --page:#0A100D; --frame:#2A3A31; }
+  * { box-sizing: border-box; }
+  body { margin:0; background: var(--page); color: var(--ink);
+    font-family: Onest, system-ui, sans-serif; font-size: 15px; line-height: 1.45; }
+  header.page { max-width: 1200px; margin: 0 auto; padding: 32px 24px 8px; }
+  header.page h1 { font-family: Unbounded, system-ui, sans-serif; font-weight: 600; font-size: 22px; margin: 0 0 6px; }
+  header.page p { margin: 0; color: var(--muted); max-width: 64ch; }
+  .seg { display: inline-flex; margin-top: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .seg button { border: 0; background: none; color: var(--ink); font: 500 13px Onest, system-ui, sans-serif; padding: 8px 14px; border-radius: 999px; cursor: pointer; min-height: 36px; }
+  .seg button[aria-pressed="true"] { background: var(--neem); color: var(--on-neem); }
+  .seg-sm { display: flex; margin: 0; }
+  .seg-sm button { flex: 1; padding: 6px 8px; font-size: 12px; }
+  .row { max-width: 1200px; margin: 0 auto; padding: 24px; display: flex; gap: 28px;
+    overflow-x: auto; scroll-snap-type: x mandatory; }
+  figure { margin: 0; flex: 0 0 auto; scroll-snap-align: start; }
+  figcaption { font-size: 13px; color: var(--muted); margin-top: 10px; text-align: center; }
+
+  .phone { width: 300px; height: 620px; background: var(--paper); border-radius: 36px;
+    border: 8px solid var(--frame); overflow: hidden; display: flex; flex-direction: column; }
+  .bar { height: 26px; }
+  .screen { flex: 1; display: flex; flex-direction: column; padding: 8px 18px 18px; gap: 14px; }
+  .wordmark { font-family: Unbounded, system-ui, sans-serif; font-weight: 600; font-size: 20px; letter-spacing: -0.01em; }
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .link { color: var(--neem); font-weight: 500; font-size: 13px; background: none; border: 0; padding: 10px 0; font-family: inherit; }
+  h2 { font-family: Unbounded, system-ui, sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2; margin: 6px 0 0; }
+  .muted { color: var(--muted); font-size: 13px; margin: 0; }
+
+  .pick { flex: 1; border-radius: 20px; background: var(--wash); border: 2px dashed var(--neem);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 20px; text-align: center; }
+  .pick svg { width: 56px; height: 56px; }
+  .btn { display: flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 14px;
+    font: 600 15px Onest, system-ui, sans-serif; border: 0; width: 100%; cursor: pointer; }
+  .btn.primary { background: var(--neem); color: var(--on-neem); }
+  .btn.ghost { background: var(--surface); color: var(--ink); border: 1px solid var(--line); }
+  .btn:focus-visible, .compare:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
+  .pair { display: flex; gap: 10px; }
+
+  /* compare slider */
+  .compare { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4 / 5; touch-action: none; cursor: ew-resize; }
+  .scene { position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 70% 30%, #FFD58A 0 9%, transparent 10%),
+      linear-gradient(170deg, transparent 58%, #3E7C6B 58.5% 70%, transparent 70.5%),
+      linear-gradient(190deg, transparent 64%, #2F5E54 64.5%),
+      linear-gradient(#8FB6E8, #F6C9A8 70%); }
+  .mark { position: absolute; right: 14px; bottom: 14px; width: 22px; height: 22px; opacity: .75; }
+  .before { position: absolute; inset: 0; clip-path: inset(0 0 0 var(--pos, 50%)); }
+  .handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 0; }
+  .handle::before { content: ""; position: absolute; top: 0; bottom: 0; left: -1.5px; width: 3px; background: #fff; }
+  .grip { position: absolute; top: 50%; left: -20px; width: 40px; height: 64px; margin-top: -32px; border-radius: 14px;
+    background: var(--neem); box-shadow: 0 2px 10px rgba(20,30,60,.35); display: flex; align-items: center; justify-content: center; gap: 4px; }
+  .grip i { width: 3px; height: 26px; background: var(--on-neem); border-radius: 2px; }
+  .tag { position: absolute; top: 10px; font-size: 12px; font-weight: 600; background: rgba(28,36,51,.7); color: #fff; padding: 3px 9px; border-radius: 999px; }
+  .tag.l { left: 10px; } .tag.r { right: 10px; }
+  .chip { align-self: flex-start; font-size: 13px; font-weight: 600; color: var(--ok-ink); background: var(--ok-bg); padding: 5px 12px; border-radius: 999px; }
+
+  /* video */
+  .thumb { border-radius: 20px; aspect-ratio: 16 / 9; position: relative; overflow: hidden; }
+  .stages { display: flex; flex-direction: column; gap: 12px; }
+  .stage { display: flex; justify-content: space-between; font-size: 14px; font-weight: 500; }
+  .stage span:last-child { color: var(--muted); font-weight: 400; }
+  .meter { height: 8px; border-radius: 999px; background: var(--wash); overflow: hidden; }
+  .meter b { display: block; height: 100%; border-radius: 999px; }
+  .done b { width: 100%; background: var(--neem); }
+  .live b { width: 62%; background: var(--amber); }
+  .spacer { flex: 1; }
+
+  /* about */
+  .about h3 { font-size: 15px; font-weight: 600; margin: 0 0 4px; }
+  .about p { margin: 0 0 14px; font-size: 14px; color: var(--muted); }
+  .about .note { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+  .about .note p { margin: 0; color: var(--ink); }
+  @media (prefers-reduced-motion: no-preference) { .compare .before { transition: clip-path .05s linear; } }
+</style>
+</head>
+<body>
+<header class="page">
+  <h1>Saaf — main screens</h1>
+  <p>Mockups for the Phase 1 watermark remover. Drag the handle on the Result screen to compare. Try the theme switch below.</p>
+  <div class="seg" role="group" aria-label="Theme">
+    <button data-t="system" aria-pressed="true">System</button><button data-t="light" aria-pressed="false">Light</button><button data-t="dark" aria-pressed="false">Dark</button>
+  </div>
+</header>
+
+<div class="row">
+  <!-- 1. Home -->
+  <figure>
+    <div class="phone"><div class="bar"></div>
+      <div class="screen">
+        <div class="top"><span class="wordmark">saaf</span><button class="link">About</button></div>
+        <h2>Clean your AI photos and videos</h2>
+        <div class="pick">
+          <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
+            <rect x="6" y="10" width="44" height="36" rx="8" stroke="var(--neem)" stroke-width="3"/>
+            <path d="M12 40l10-11 8 8 6-6 8 9" stroke="var(--neem)" stroke-width="3" stroke-linejoin="round"/>
+            <circle cx="38" cy="20" r="4" fill="var(--neem)"/>
+          </svg>
+          <strong>Choose photos or a video</strong>
+          <p class="muted">JPG, PNG, WebP, MP4, MOV</p>
+        </div>
+        <p class="muted">Photos are cleaned on your device. Videos are processed on our server and deleted right after.</p>
+        <button class="btn primary">Choose files</button>
+      </div>
+    </div>
+    <figcaption>Home</figcaption>
+  </figure>
+
+  <!-- 2. Result -->
+  <figure>
+    <div class="phone"><div class="bar"></div>
+      <div class="screen">
+        <div class="top"><button class="link">Back</button><span class="chip">Watermark removed</span></div>
+        <div class="compare" id="cmp" tabindex="0" role="slider" aria-label="Compare before and after" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <div class="scene"></div>
+          <div class="before">
+            <div class="scene"></div>
+            <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c.6 5.6 5.4 10.4 11 11-5.6.6-10.4 5.4-11 11-.6-5.6-5.4-10.4-11-11C6.6 11.4 11.4 6.6 12 1z" fill="#fff"/></svg>
+          </div>
+          <span class="tag l">After</span><span class="tag r">Before</span>
+          <div class="handle"><div class="grip"><i></i><i></i></div></div>
+        </div>
+        <div class="spacer"></div>
+        <div class="pair"><button class="btn primary">Save to gallery</button><button class="btn ghost" style="flex:0 0 96px">Share</button></div>
+        <button class="link" style="align-self:center">Clean another</button>
+      </div>
+    </div>
+    <figcaption>Result — image</figcaption>
+  </figure>
+
+  <!-- 3. Video -->
+  <figure>
+    <div class="phone"><div class="bar"></div>
+      <div class="screen">
+        <div class="top" style="min-height:40px"><span class="muted">clip_0412.mp4, 8 seconds</span></div>
+        <div class="thumb"><div class="scene"></div></div>
+        <h2>Cleaning video…</h2>
+        <div class="stages">
+          <div><div class="stage"><span>Uploading</span><span>Done</span></div><div class="meter done"><b></b></div></div>
+          <div><div class="stage"><span>Cleaning</span><span>62%</span></div><div class="meter live"><b></b></div></div>
+        </div>
+        <p class="muted">Keep the app open. Your video is deleted from the server as soon as it's sent back.</p>
+        <div class="spacer"></div>
+        <button class="btn ghost">Cancel</button>
+      </div>
+    </div>
+    <figcaption>Video — processing</figcaption>
+  </figure>
+
+  <!-- 4. About -->
+  <figure>
+    <div class="phone"><div class="bar"></div>
+      <div class="screen about">
+        <div class="top"><button class="link">Back</button><span class="wordmark" style="font-size:16px">saaf</span></div>
+        <div>
+          <h3>What Saaf does</h3>
+          <p>Removes the visible sparkle logo from Gemini images and Veo videos.</p>
+          <h3>Your files</h3>
+          <p>Photos never leave your device. Videos are uploaded, cleaned and deleted right after.</p>
+        </div>
+        <div><h3>Theme</h3>
+          <div class="seg seg-sm" role="group" aria-label="Theme"><button data-t="system" aria-pressed="true">System</button><button data-t="light" aria-pressed="false">Light</button><button data-t="dark" aria-pressed="false">Dark</button></div>
+        </div>
+        <div class="note"><p>Saaf removes only the visible logo. Google's invisible SynthID watermark stays in the file.</p></div>
+        <div>
+          <h3>Credits</h3>
+          <p>Built on open-source reverse alpha blending research. Full notices in the app.</p>
+        </div>
+        <div class="spacer"></div>
+        <p class="muted" style="text-align:center">Version 0.1.0</p>
+      </div>
+    </div>
+    <figcaption>About</figcaption>
+  </figure>
+</div>
+
+<script>
+  const cmp = document.getElementById('cmp');
+  let pos = 50;
+  const set = (p) => { pos = Math.max(0, Math.min(100, p)); cmp.style.setProperty('--pos', pos + '%'); cmp.setAttribute('aria-valuenow', Math.round(pos)); };
+  const fromEvent = (e) => { const r = cmp.getBoundingClientRect(); set(((e.clientX - r.left) / r.width) * 100); };
+  cmp.addEventListener('pointerdown', (e) => { cmp.setPointerCapture(e.pointerId); fromEvent(e); });
+  cmp.addEventListener('pointermove', (e) => { if (cmp.hasPointerCapture(e.pointerId)) fromEvent(e); });
+  cmp.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { set(pos - 5); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { set(pos + 5); e.preventDefault(); }
+  });
+  set(50);
+  const segs = document.querySelectorAll('[data-t]');
+  segs.forEach((b) => b.addEventListener('click', () => {
+    const t = b.dataset.t;
+    if (t === 'system') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', t);
+    segs.forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.t === t)));
+  }));
+</script>
+</body>
+</html>

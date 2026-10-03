@@ -1,0 +1,20 @@
+{
+  "version": "2026-10-02",
+  "threshold": 0.35,
+  "searchRadius": 8,
+  "minOutlineEdge": 2,
+  "maxOutlineEdgeAfter": 1.5,
+  "templates": [
+    { "id": "g48-m32", "size": 48, "marginRight": 32, "marginBottom": 32, "file": "alpha-48" },
+    { "id": "g96-m64", "size": 96, "marginRight": 64, "marginBottom": 64, "file": "alpha-96" },
+    { "id": "g48-m96", "size": 48, "marginRight": 96, "marginBottom": 96, "file": "alpha-48" },
+    { "id": "g36-m96", "size": 36, "marginRight": 96, "marginBottom": 96, "file": "alpha-36" },
+    { "id": "g96-m192", "size": 96, "marginRight": 192, "marginBottom": 192, "file": "alpha-96-20260520" }
+  ],
+  "videoTemplates": [
+    { "id": "veo-48-m96", "size": 48, "marginRight": 96, "marginBottom": 96, "file": "alpha-veo-48" },
+    { "id": "veo-48-m72", "size": 48, "marginRight": 72, "marginBottom": 72, "file": "alpha-veo-48" },
+    { "id": "veo-72-m108", "size": 72, "marginRight": 108, "marginBottom": 108, "file": "alpha-veo-72" },
+    { "id": "veo-72-m144", "size": 72, "marginRight": 144, "marginBottom": 144, "file": "alpha-veo-72" }
+  ]
+}

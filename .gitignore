@@ -1,0 +1,21 @@
+node_modules/
+.expo/
+dist/
+web-build/
+*.log
+.env
+.env.*
+!.env.example
+server/.venv/
+__pycache__/
+.pytest_cache/
+/tmp/
+.DS_Store
+
+# test APKs
+/builds/
+
+# Real sample files: large, and not ours to publish (see fixtures/README.md).
+fixtures/images/*
+fixtures/videos/*
+!fixtures/**/.gitkeep

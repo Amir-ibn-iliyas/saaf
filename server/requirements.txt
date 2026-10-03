@@ -1,0 +1,6 @@
+# Runtime dependencies (pinned). Install: pip install -r requirements.txt
+# FFmpeg (ffmpeg + ffprobe on PATH, or SAAF_FFMPEG / SAAF_FFPROBE) is needed too.
+fastapi==0.142.2
+uvicorn==0.54.0
+python-multipart==0.0.32
+numpy==2.5.3
